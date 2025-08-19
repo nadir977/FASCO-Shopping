@@ -23,7 +23,6 @@ const AppNavbar = () => {
     >
       <div className="mx-auto max-w-[1281px]">
         <div className="relative flex h-[104px] items-center justify-between">
-          {/* Mobile menu button */}
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden pr-4">
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-white/5 hover:text-[#333] focus:outline-2 focus:-outline-offset-1 focus:outline-[#484848]">
               <span className="sr-only">Open main menu</span>
@@ -31,14 +30,11 @@ const AppNavbar = () => {
               <XMarkIcon className="hidden h-6 w-6 group-data-[open]:block" />
             </DisclosureButton>
           </div>
-
-          {/* Logo + Desktop Nav */}
           <div className="flex w-full md:p-0 pl-6 items-center justify-between">
             <div className="flex shrink-0 items-center">
               <img alt="Your Company" src={FASCO} className="h-8 w-auto" />
             </div>
 
-            {/* Nav Links */}
             <div className="hidden sm:flex sm:ml-6 space-x-4 items-center">
               {navigation.map((item) => (
                 <a
@@ -58,7 +54,6 @@ const AppNavbar = () => {
                 </a>
               ))}
 
-              {/* Sign In */}
               <Link to="/signin">
                 <button
                   className="relative mx-6 px-2 py-1 text-[#484848] font-medium 
@@ -69,7 +64,6 @@ const AppNavbar = () => {
                 </button>
               </Link>
 
-              {/* Sign Up */}
               <Link to="/signup">
                 <button className="py-3 px-8 cursor-pointer rounded-lg bg-black hover:bg-[#333] text-white">
                   Sign Up
@@ -80,7 +74,6 @@ const AppNavbar = () => {
         </div>
       </div>
 
-      {/* Mobile Nav */}
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (

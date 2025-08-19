@@ -5,7 +5,7 @@ import image13 from "../assets/image13.png";
 const Footer = () => {
   return (
     <>
-      <div className="max-w-[1400px] mx-auto pt-40 flex flex-col md:flex-row  items-center justify-between gap-12 px-6">
+      <div className="max-w-[1400px] mx-auto pt-10 flex flex-col md:flex-row  items-center justify-between gap-12 px-6">
         <div>
           <img src={image12} alt="Image" className="max-w-full" />
         </div>

@@ -6,11 +6,13 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import NewPassword from "./NewPassword";
 import ForgotPassword from "./ForgotPassword";
+import Shop from "./Shop";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Shop />} />
+      <Route path="/Home" element={<Home />} />
       <Route path="/confirmationCode" element={<ConfirmationCode />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />

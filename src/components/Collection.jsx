@@ -9,7 +9,7 @@ const Collection = () => {
   return (
     <div className="max-w-[1400px] mx-auto">
       <div
-        className="bg-cover bg-center  mt-[120px] w-full"
+        className="bg-cover bg-center  mt-[40px] w-full"
         style={{ backgroundImage: `url(${Group})` }}>
         <div className="max-w-[1280px] mx-auto h-full flex flex-col md:flex-row">
           <div className="w-full md:w-1/2"><img src={Group1} alt="collaction" className="w-full h-full object-cover"/></div>

@@ -54,7 +54,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <div className="bg-[#FAFAFA] pt-16 pb-8 max-w-[1920px] mx-auto">
+    <div className="bg-[#FAFAFA] pt-16 pb-8 md:mb-20 max-w-[1920px] mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-[46px] text-[#484848] Instagram_h1">
           This Is What Our Customers Say

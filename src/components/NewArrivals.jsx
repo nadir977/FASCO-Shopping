@@ -80,7 +80,7 @@ export default function NewArrivals() {
   const [activeCategory, setActiveCategory] = useState("Women's Fashion");
 
   return (
-    <section className="max-w-[1281px] mx-auto md:pt-30 pt-10 px-4">
+    <section className="max-w-[1281px] mx-auto md:pt-30 py-10 px-4">
       <div className="text-center mb-10">
         <h2 className="text-[46px] Instagram_h1 text-[#484848]">New Arrivals</h2>
         <p className="text-[#8A8A8A] mt-2 max-w-xl mx-auto">
