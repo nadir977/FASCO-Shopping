@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Group from "../assets/Group.png";
 import Group1 from "../assets/Group1.png";
 import feature1 from "../assets/feature1.png";
@@ -6,6 +6,7 @@ import feature2 from "../assets/feature2.png";
 import feature3 from "../assets/feature3.png";
 import feature4 from "../assets/feature4.png";
 const Collection = () => {
+
   return (
     <div className="max-w-[1400px] mx-auto">
       <div

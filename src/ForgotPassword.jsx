@@ -60,7 +60,7 @@ const ForgotPassword = () => {
               <div className="w-full flex justify-center gap-1 my-2">
                 <p>Already have an account?</p>
                 <Link
-                  to="/SignIn"
+                  to="/login"
                   className="text-[#5B86E5] font-[700] cursor-pointer hover:underline"
                 >
                   Login

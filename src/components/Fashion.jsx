@@ -14,7 +14,6 @@ import image31 from "../assets/image31.png";
 import image32 from "../assets/image32.png";
 import image33 from "../assets/image33.png";
 import image34 from "../assets/image34.png";
-
 import Filters from "./Filters";
 
 const products = [

@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
-import { dealSlides } from "../assets/data";
+import { dealSlides } from "../assets/data.jsX";
 
 const Deals = () => {
   const prevRef = useRef(null);
@@ -25,6 +25,27 @@ const Deals = () => {
       swiperInstance.pagination.update();
     }
   }, [swiperInstance]);
+
+  const [timeLeft, setTimeLeft] = useState(6 * 60 * 60);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatTime = (seconds) => {
+    const d = Math.floor(seconds / (60 * 60 * 24));
+    const h = Math.floor((seconds % (60 * 60 * 24)) / (60 * 60));
+    const m = Math.floor((seconds % (60 * 60)) / 60);
+    const s = seconds % 60;
+
+    return { d, h, m, s };
+  };
+
+  const { d, h, m, s } = formatTime(timeLeft);
 
   return (
     <div className=" md:py-30 py-10 max-w-[1280px] mx-auto px-4 sm:px-6">
@@ -49,17 +70,17 @@ const Deals = () => {
 
           <div className="flex gap-4 flex-wrap mb-2">
             {[
-              { value: "02", label: "Days" },
-              { value: "06", label: "Hr" },
-              { value: "05", label: "Mins" },
-              { value: "30", label: "Sec" },
+              { value: d, label: "Days" },
+              { value: h, label: "Hr" },
+              { value: m, label: "Mins" },
+              { value: s, label: "Sec" },
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center">
                 <div
-                  className="px-4 py-2 rounded-lg bg-white text-[#484848] text-[32px]"
+                  className="px-4 py-2 rounded-lg bg-white text-[#484848] text-[32px] font-bold min-w-[70px] text-center"
                   style={{ boxShadow: "0px 4px 14px 1px #00000029" }}
                 >
-                  {item.value}
+                  {String(item.value).padStart(2, "0")}
                 </div>
                 <p className="text-[24px] text-[#484848] mt-1">{item.label}</p>
               </div>

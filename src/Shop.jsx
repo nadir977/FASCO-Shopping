@@ -8,8 +8,7 @@ import Footer from './components/Footer';
 const Shop = () => {
   return (
     <>
-
-      <ShopNavbar />
+ 
       <Fashion />
       <Collection />
       <Instagram />

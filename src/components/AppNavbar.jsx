@@ -6,16 +6,25 @@ import {
   DisclosurePanel,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { navLinks } from "../assets/data.jsX";
 
 const navigation = [
   { name: "Home", href: "#home", current: true },
-  { name: "Deals", href: "#deals", current: false },
+  { name: "Deals", href: "/shop", current: false },
   { name: "New Arrivals", href: "#new-arrivals", current: false },
   { name: "Collection", href: "#packages", current: false },
 ];
 
 const AppNavbar = () => {
+
+
+  const pathname = useLocation().pathname; 
+ 
+ if(navLinks.includes(pathname)){
+   return null;
+ }
+
   return (
     <Disclosure
       as="nav"
@@ -37,24 +46,24 @@ const AppNavbar = () => {
 
             <div className="hidden sm:flex sm:ml-6 space-x-4 items-center">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   aria-current={item.current ? "page" : undefined}
                   className={`
                     relative mx-6 px-2 py-1 text-[#484848] font-medium after:content-[''] after:absolute after:bottom-0 after:h-[2px] after:bg-[#484848] after:transition-all
                     ${
-                      item.current
+                      item.current  
                         ? "after:left-0 after:w-full text-[#484848] font-semibold"
                         : "after:left-1/2 after:w-0 hover:after:w-full hover:after:left-0"
                     }
                   `}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
 
-              <Link to="/signin">
+              <Link to="/login">
                 <button
                   className="relative mx-6 px-2 py-1 text-[#484848] font-medium 
                     after:content-[''] after:absolute after:bottom-0 after:h-[2px] after:bg-[#484848] after:transition-all
@@ -64,7 +73,7 @@ const AppNavbar = () => {
                 </button>
               </Link>
 
-              <Link to="/signup">
+              <Link to="/registration">
                 <button className="py-3 px-8 cursor-pointer rounded-lg bg-black hover:bg-[#333] text-white">
                   Sign Up
                 </button>
@@ -87,7 +96,7 @@ const AppNavbar = () => {
               {item.name}
             </DisclosureButton>
           ))}
-          <Link to="/signin">
+          <Link to="/login">
             <DisclosureButton
               as="a"
               className="block rounded-md px-3 py-2 text-[#484848] font-medium hover:underline"
@@ -95,7 +104,7 @@ const AppNavbar = () => {
               Sign in
             </DisclosureButton>
           </Link>
-          <Link to="/signup">
+          <Link to="/registration">
             <DisclosureButton
               as="a"
               className="block max-w-[100px] pl-5 lg:pl-0 px-3 py-2 font-medium text-white bg-black rounded-lg"

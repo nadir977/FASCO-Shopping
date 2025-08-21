@@ -18,3 +18,21 @@ export const dealSlides = [
     image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
   },
 ];
+
+
+export const navigation = [
+  { name: "Home", href: "/" },
+  { name: "Shop", href: "/shop" },
+  { name: "Products", href: "/product" },
+  {
+    name: "Pages",
+    href: "#Pages",
+    submenu: [
+      { name: "About Us", href: "#about" },
+      { name: "Contact", href: "#contact" },
+      { name: "FAQ", href: "#faq" },
+    ],
+  },
+];
+
+export  const navLinks =  ["/login","/registration","/ForgotPassword","/ConfirmationCode","/newpassword"]

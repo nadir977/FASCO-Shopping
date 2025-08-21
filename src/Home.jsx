@@ -1,5 +1,4 @@
-import React from "react";
-import AppNavbar from "./components/AppNavbar";
+import React from "react"; 
 import Collection from "./components/Collection";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -11,7 +10,7 @@ import NewArrivals from "./components/NewArrivals";
 const Home = () => {
   return (
     <>
-      <AppNavbar />
+    
       <Hero />
       <div className="bg-[#FAFAFA] ">
         <div className="max-w-[1400px] mx-auto ">

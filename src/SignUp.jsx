@@ -90,7 +90,7 @@ const SignUp = () => {
               <div className="w-full flex justify-center gap-1 text-[16px]">
                 <p>Already have an account?</p>
                 <Link
-                  to="/signIn"
+                  to="/login"
                   className="text-[#5B86E5] font-[700] cursor-pointer hover:underline"
                 >
                   Login
