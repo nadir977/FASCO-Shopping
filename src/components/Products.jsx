@@ -12,6 +12,8 @@ import { GoQuestion } from "react-icons/go";
 import { GrShareOption } from "react-icons/gr";
 import { BsTruck, BsBox2 } from "react-icons/bs";
 import trustbag from "../assets/trustbag.png";
+import { Link } from "react-router-dom";
+import ModalCard from "./ModalCard";
 
 const products = [
   { id: 1, image: image35 },
@@ -32,6 +34,7 @@ const Products = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [quantity, setQuantity] = useState(1);
   const [active, setActive] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
 
   const [timeLeft, setTimeLeft] = useState(6 * 60 * 60);
 
@@ -47,13 +50,29 @@ const Products = () => {
     const h = Math.floor((seconds % (60 * 60 * 24)) / (60 * 60));
     const m = Math.floor((seconds % (60 * 60)) / 60);
     const s = seconds % 60;
-
     return { d, h, m, s };
   };
 
+  const cartItems = [
+    {
+      name: "Denim Jacket",
+      color: "Red",
+      size: selectedSize,
+      quantity: quantity,
+      price: 39.0,
+      image: selectedImage,
+    },
+  ];
 
   return (
     <div className="max-w-[1281px] mx-auto my-10 md:my-16 flex flex-col md:flex-row md:justify-between px-4 md:px-0">
+     
+      <ModalCard
+        open={openCart}
+        onClose={() => setOpenCart(false)}
+        cartItems={cartItems}
+      />
+
       <div className="flex flex-col md:flex-row max-w-[615px] ">
         <div className="flex md:flex-col gap-4 p-1 px-6 w-fit h-fit md:order-1 order-2 justify-center md:justify-start">
           {products.map((product) => (
@@ -93,12 +112,16 @@ const Products = () => {
             <h1 className="text-[22px] sm:text-[30px] leading-[32px] sm:leading-[42px] Instagram_h1">
               Denim Jacket
             </h1>
-             <div
-      onClick={() => setActive(!active)}
-      className="p-2 cursor-pointer bg-[#FFFFFF] border rounded-full border-[#EEEEEE]"
-    >
-      <FaRegStar className={active ? "text-yellow-500" : "text-gray-400"} />
-    </div>
+            <div
+              onClick={() => setActive(!active)}
+              className="p-2 cursor-pointer bg-[#FFFFFF] border rounded-full border-[#EEEEEE]"
+            >
+              {active ? (
+                <FaStar className="text-yellow-500" />
+              ) : (
+                <FaRegStar className="text-gray-400" />
+              )}
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <div className="flex text-yellow-500">
@@ -123,24 +146,14 @@ const Products = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 py-2">
-          <FaEye />
-          <p className="text-[#8A8A8A] leading-[24px] text-sm sm:text-base">
-            24 people are viewing this right now
-          </p>
-        </div>
-
         <div className="flex justify-between items-center py-2 px-4 border-[#F8CCCC] border bg-[#FDEFEE] rounded transition hover:bg-[#ffeaea]">
           <p className="text-[14px] sm:text-[18px] text-[#FF706B]">
             Hurry up! Sale ends in:
           </p>
           <div className="flex gap-2 sm:gap-4 text-[#FF706B] text-[14px] sm:text-[20px] font-[600] whitespace-nowrap">
-            <span>{String(formatTime(timeLeft).d).padStart(2, "0")}</span>
-            <span>:</span>
-            <span>{String(formatTime(timeLeft).h).padStart(2, "0")}</span>
-            <span>:</span>
-            <span>{String(formatTime(timeLeft).m).padStart(2, "0")}</span>
-            <span>:</span>
+            <span>{String(formatTime(timeLeft).d).padStart(2, "0")}</span>:
+            <span>{String(formatTime(timeLeft).h).padStart(2, "0")}</span>:
+            <span>{String(formatTime(timeLeft).m).padStart(2, "0")}</span>:
             <span>{String(formatTime(timeLeft).s).padStart(2, "0")}</span>
           </div>
         </div>
@@ -215,7 +228,11 @@ const Products = () => {
                 +
               </button>
             </div>
-            <button className="font-[700] leading-[24px] Instagram_h1 border py-2 rounded justify-center items-center w-full cursor-pointer hover:bg-gray-300">
+
+            <button
+              onClick={() => setOpenCart(true)}
+              className="font-[700] leading-[24px] Instagram_h1 border py-2 px-6 rounded flex justify-center items-center w-full cursor-pointer hover:bg-gray-300"
+            >
               Add to cart
             </button>
           </div>
@@ -238,7 +255,7 @@ const Products = () => {
             <BsTruck />
             <span className="font-[700] leading-[24px] Instagram_h1">
               Estimated Delivery:
-            </span>{" "}
+            </span>
             Jul 30 - Aug 03
           </div>
           <div className="flex gap-2 items-start">
@@ -247,7 +264,7 @@ const Products = () => {
               <p className="font-[700] leading-[24px] Instagram_h1 block sm:inline pr-1">
                 Free Shipping & Returns:
               </p>
-              <p className="text-sm  block sm:inline">On all orders over $75</p>
+              <p className="text-sm block sm:inline">On all orders over $75</p>
             </div>
           </div>
         </div>

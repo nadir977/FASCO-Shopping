@@ -55,7 +55,9 @@ const ShopNavbar = () => {
             </div>
             <MdOutlinePermIdentity className="w-5 h-5 text-[#484848] cursor-pointer hover:text-black" />
             <FaRegStar className="hidden md:inline-block w-5 h-5 text-[#484848] cursor-pointer hover:text-black" />
+            <Link to="/shoppingCart">
             <BiShoppingBag className="w-5 h-5 text-[#484848] cursor-pointer hover:text-black" />
+            </Link>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdChevronRight } from "react-icons/md";
 import product from "./assets/product.png";
 import Footer from "./components/Footer";
+import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
   const [quantity, setQuantity] = useState(1);
@@ -81,16 +82,12 @@ const ShoppingCart = () => {
             <p>Subtotal</p>
             <p>$100.00</p>
           </div>
-          <button className="bg-black py-2 text-white w-full rounded-md cursor-pointer shadow-[0px_20px_35px_0px_#00000026] ">
-            Checkout
-          </button>
-          <div className="flex justify-center">
-            <button className="py-2 cursor-pointer underline text-sm sm:text-base">
-              View Cart
+          <Link to="/checkout">
+            <button className="bg-black py-2 text-white w-full rounded-md cursor-pointer shadow-[0px_20px_35px_0px_#00000026] ">
+              Checkout
             </button>
-          </div>
+          </Link>
         </div>
-        
       </div>
       <Footer />
     </>

@@ -11,6 +11,7 @@ import ProductPage from "./ProductPage";
 import ShopNavbar from "./components/ShopNavbar";
 import AppNavbar from "./components/AppNavbar"
 import ShoppingCart from "./ShoppingCart";
+import Checkout from "./Checkout";
 
 
 
@@ -27,13 +28,14 @@ function App() {
       <Routes>
         <Route path="/product" element={<ProductPage />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/confirmationCode" element={<ConfirmationCode />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/registration" element={<SignUp />} />
         <Route path="/newpassword" element={<NewPassword />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/" element={<ShoppingCart />} />
+        <Route path="/shoppingCart" element={<ShoppingCart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </main>
   );
