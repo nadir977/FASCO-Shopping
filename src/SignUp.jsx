@@ -8,57 +8,65 @@ const SignUp = () => {
   return (
     <div className="w-screen min-h-screen flex items-center justify-center">
       <div className="w-full max-w-[1200px] border border-[#DBDBDB] flex flex-col md:flex-row md:rounded-r-xl overflow-hidden">
-        
+         
         <div className="w-full md:w-1/2 h-1/2 md:h-full">
           <img
             src={image25}
-            alt="Image"
+            alt="Sign up visual"
             className="w-full h-full object-cover"
           />
         </div>
- 
+  
         <div className="w-full md:w-1/2 flex flex-col justify-between">
           <div className="flex flex-col py-4 px-6 md:px-16">
-            <h2 className="md:text-[66px] text-[40px] Instagram_h1 text-[#484848] mb-2">
+            <h2 className="md:text-[66px] text-[40px] Instagram_h1 text-[#484848] mb-2 text-center md:text-left">
               FASCO
             </h2>
-            <h4 className="text-[#000000] md:text-[30px] text-[20px] Instagram_h1 mb-6">
+            <h4 className="text-[#000000] md:text-[30px] text-[20px] Instagram_h1 mb-6 text-center md:text-left">
               Create Account
             </h4>
- 
+  
             <div className="flex flex-col md:flex-row gap-4 w-full">
-              <button className="flex items-center justify-center gap-2 border rounded-lg px-6 py-2 cursor-pointer border-[#5B86E5] hover:bg-[#5B86E5]/10 transition w-full md:w-auto">
+              <button
+                aria-label="Sign up with Google"
+                className="flex items-center justify-center gap-2 border rounded-lg px-6 py-2 cursor-pointer border-[#5B86E5] hover:bg-[#5B86E5]/10 transition w-full md:w-auto"
+              >
                 <img src={image23} alt="Google" className="w-5 h-5" />
-                <p className="text-sm md:text-sm lg:text-base font-medium whitespace-nowrap">
+                <p className="text-sm md:text-base font-medium whitespace-nowrap">
                   Sign up with Google
                 </p>
               </button>
 
-              <button className="flex items-center justify-center gap-2 border rounded-lg px-6 py-2 cursor-pointer border-[#5B86E5] hover:bg-[#5B86E5]/10 transition w-full md:w-auto">
+              <button
+                aria-label="Sign up with Email"
+                className="flex items-center justify-center gap-2 border rounded-lg px-6 py-2 cursor-pointer border-[#5B86E5] hover:bg-[#5B86E5]/10 transition w-full md:w-auto"
+              >
                 <img src={image24} alt="Email" className="w-5 h-5" />
-                <p className="text-sm md:text-base lg:text-lg font-medium whitespace-nowrap">
+                <p className="text-sm md:text-base font-medium whitespace-nowrap">
                   Sign up with Email
                 </p>
               </button>
             </div>
- 
+  
             <div className="flex items-center justify-center my-6">
-              <div className="flex-1 h-[5px] max-w-[30px] bg-[#838383]" />
-              <p className="mx-4 text-[#838383] font-[700] text-[30px]">OR</p>
-              <div className="flex-1 h-[5px] max-w-[30px] bg-[#838383]" />
+              <div className="flex-1 h-[1px] bg-[#838383]" />
+              <p className="mx-4 text-[#838383] font-[700] text-[18px]">OR</p>
+              <div className="flex-1 h-[1px] bg-[#838383]" />
             </div>
- 
+  
             <div className="flex flex-col gap-6">
               <div className="flex flex-col md:flex-row gap-6">
                 <input
                   type="text"
                   placeholder="First Name"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  aria-label="First Name"
+                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 px-2 placeholder:text-[#8A8A8A]"
                 />
                 <input
                   type="text"
                   placeholder="Last Name"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  aria-label="Last Name"
+                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 px-2 placeholder:text-[#8A8A8A]"
                 />
               </div>
 
@@ -66,12 +74,14 @@ const SignUp = () => {
                 <input
                   type="email"
                   placeholder="Email Address"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  aria-label="Email Address"
+                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 px-2 placeholder:text-[#8A8A8A]"
                 />
                 <input
                   type="tel"
                   placeholder="Phone Number"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  aria-label="Phone Number"
+                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 px-2 placeholder:text-[#8A8A8A]"
                 />
               </div>
 
@@ -79,16 +89,18 @@ const SignUp = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  aria-label="Password"
+                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 px-2 placeholder:text-[#8A8A8A]"
                 />
                 <input
                   type="password"
                   placeholder="Confirm Password"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  aria-label="Confirm Password"
+                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 px-2 placeholder:text-[#8A8A8A]"
                 />
               </div>
             </div>
- 
+  
             <div className="flex flex-col gap-4 mt-8">
               <button className="w-full bg-black hover:bg-[#333] transition text-white py-3 rounded-lg cursor-pointer shadow-2xl">
                 Create Account
@@ -105,8 +117,8 @@ const SignUp = () => {
               </div>
             </div>
           </div>
- 
-          <div className="flex justify-center lg:justify-end px-6 md:px-10 py-6 text-[16px]">
+  
+          <div className="flex justify-center lg:justify-end px-6 md:px-10 py-4 text-[16px]">
             <a
               href="#"
               className="relative cursor-pointer text-[#484848] 
