@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdChevronRight } from "react-icons/md";
-import product from "./assets/product.png";
-import Footer from "./components/Footer";
+import product from "../assets/product.png"; 
+import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {

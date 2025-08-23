@@ -1,11 +1,11 @@
 import React from "react"; 
-import Collection from "./components/Collection";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Instagram from "./components/Instagram";
-import Testimonial from "./components/Testimonial";
-import Deals from "./components/Deals";
-import NewArrivals from "./components/NewArrivals";
+import Collection from "../components/Collection";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Instagram from "../components/Instagram";
+import Testimonial from "../components/Testimonial";
+import Deals from "../components/Deals";
+import NewArrivals from "../components/NewArrivals";
 
 const Home = () => {
   return (

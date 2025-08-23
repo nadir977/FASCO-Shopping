@@ -1,5 +1,5 @@
 import React from "react";
-import image22 from "./assets/image22.png";
+import image22 from "../assets/image22.png";
 
 const NewPassword = () => {
   return (

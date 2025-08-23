@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { TbLockFilled } from "react-icons/tb";
-import Rectangle from "./assets/Rectangle.png";
-import visa from "./assets/visa.png";
-import paypal from "./assets/paypal.png";
-import unionpay from "./assets/unionpay.png";
-import american from "./assets/american.png";
-import discover from "./assets/discover.png";
-import credit from "./assets/credit.png";
-import Footer from "./components/Footer";
+import Rectangle from "../assets/Rectangle.png";
+import visa from "../assets/visa.png";
+import paypal from "../assets/paypal.png";
+import unionpay from "../assets/unionpay.png";
+import american from "../assets/american.png";
+import discover from "../assets/discover.png";
+import credit from "../assets/credit.png";
+import Footer from "../components/Footer";
 
 const Checkout = () => {
   const [selected, setSelected] = useState({

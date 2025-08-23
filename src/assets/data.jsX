@@ -17,6 +17,18 @@ export const dealSlides = [
     discount: "40% OFF",
     image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
   },
+   {
+    id: "04",
+    title: "New Arrival",
+    discount: "40% OFF",
+    image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
+  },
+   {
+    id: "05",
+    title: "Summer Vibes",
+    discount: "25% OFF",
+    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800",
+  },
 ];
 
 

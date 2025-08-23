@@ -1,17 +1,17 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import React from "react";
-import Home from "./Home";
-import ConfirmationCode from "./ConfirmationCode";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import NewPassword from "./NewPassword";
-import ForgotPassword from "./ForgotPassword";
-import Shop from "./Shop";
-import ProductPage from "./ProductPage";
+import Home from "./pages/Home";
+import ConfirmationCode from "./pages/ConfirmationCode";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import NewPassword from "./pages/NewPassword";
+import ForgotPassword from "./pages/ForgotPassword";
+import Shop from "./pages/Shop";
+import ProductPage from "./pages/ProductPage";
 import ShopNavbar from "./components/ShopNavbar";
-import AppNavbar from "./components/AppNavbar"
-import ShoppingCart from "./ShoppingCart";
-import Checkout from "./Checkout";
+import AppNavbar from "./components/AppNavbar";
+import ShoppingCart from "./pages/ShoppingCart";
+import Checkout from "./pages/Checkout";
 
 
 

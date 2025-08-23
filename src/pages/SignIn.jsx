@@ -1,7 +1,7 @@
 import React from "react";
-import image22 from "./assets/image22.png";
-import image23 from "./assets/image23.png";
-import image24 from "./assets/image24.png";
+import image22 from "../assets/image22.png";
+import image23 from "../assets/image23.png";
+import image24 from "../assets/image24.png";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
