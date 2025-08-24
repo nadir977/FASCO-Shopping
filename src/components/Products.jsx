@@ -103,7 +103,7 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="flex flex-col max-w-[585px] w-full gap-6 md:pr-2 xl:pr-0 ">
+      <div className="flex flex-col max-w-[585px] w-full gap-6 md:pr-2 2xl:pr-0 ">
         <div className="flex flex-col">
           <p className="text-[12px] sm:text-[14px] leading-[20px] py-1 text-[#666666] Instagram_h1">
             Fasco

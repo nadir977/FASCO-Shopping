@@ -31,7 +31,7 @@ const AppNavbar = () => {
       className="relative after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px text-black"
     >
       <div className="mx-auto max-w-[1281px]">
-        <div className="relative flex h-[104px] items-center justify-between md:px-2 xl:px-0">
+        <div className="relative flex h-[104px] items-center justify-between md:px-2 2xl:px-0">
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden pr-4">
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-white/5 hover:text-[#333] focus:outline-2 focus:-outline-offset-1 focus:outline-[#484848]">
               <span className="sr-only">Open main menu</span>

@@ -49,7 +49,7 @@ const Collection = () => {
         </div>
       </div>
 
-      <div className="max-w-[1281px] mx-auto md:px-2 xl:px-0 flex flex-wrap justify-center md:justify-between py-16 gap-8">
+      <div className="max-w-[1281px] mx-auto md:px-2 2xl:px-0 flex flex-wrap justify-center md:justify-between py-16 gap-8">
         <img
           src={feature1}
           alt="Image"
