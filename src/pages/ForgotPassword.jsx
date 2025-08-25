@@ -1,8 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import image22 from "../assets/image22.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    if (!form.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!form.lastName.trim()) newErrors.lastName = "Last name is required";
+    if (!form.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
+      newErrors.email = "Invalid email format";
+    }
+    if (!form.phone.trim()) newErrors.phone = "Phone number is required";
+
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      alert("Confirmation code sent!");
+      console.log(form); 
+      navigate("/confirmationCode");
+    }
+  };
+
   return (
     <div className="w-screen min-h-screen flex items-center justify-center">
       <div className="w-full max-w-[1200px] border border-[#DBDBDB] flex flex-col md:flex-row md:rounded-r-xl overflow-hidden">
@@ -25,40 +66,75 @@ const ForgotPassword = () => {
 
             <div className="flex flex-col gap-6">
               <div className="flex flex-col md:flex-row gap-6">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
-                />
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    name="firstName"
+                    onChange={handleChange}
+                    value={form.firstName}
+                    placeholder="First Name"
+                    className="w-full outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  />
+                  {errors.firstName && (
+                    <p className="text-red-500 text-sm">{errors.firstName}</p>
+                  )}
+                </div>
+
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    name="lastName"
+                    onChange={handleChange}
+                    value={form.lastName}
+                    placeholder="Last Name"
+                    className="w-full outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  />
+                  {errors.lastName && (
+                    <p className="text-red-500 text-sm">{errors.lastName}</p>
+                  )}
+                </div>
               </div>
 
               <div className="flex flex-col md:flex-row gap-6">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
-                />
-                <input
-                  type="tel"
-                  inputMode="numeric"
-                  required
-                  placeholder="Phone Number"
-                  className="flex-1 outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
-                />
+                <div className="flex-1">
+                  <input
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    value={form.email}
+                    placeholder="Email Address"
+                    className="w-full outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm">{errors.email}</p>
+                  )}
+                </div>
+
+                <div className="flex-1">
+                  <input
+                    type="tel"
+                    name="phone"
+                    onChange={handleChange}
+                    value={form.phone}
+                    inputMode="numeric"
+                    placeholder="Phone Number"
+                    className="w-full outline-0 border-b border-[#9D9D9D] py-2 placeholder:text-[#8A8A8A]"
+                  />
+                  {errors.phone && (
+                    <p className="text-red-500 text-sm">{errors.phone}</p>
+                  )}
+                </div>
               </div>
             </div>
 
             <div className="flex flex-col px-4 gap-4">
-              <Link to="/ConfirmationCode">
-                <button className="w-full bg-black hover:bg-[#333] shadow-[0px_20px_35px_0px_#00000026] mt-6 text-white py-3 rounded-lg cursor-pointer">
-                  Send Confirmation Code
-                </button>
-              </Link>
+              <button
+                onClick={handleSubmit}
+                className="w-full bg-black hover:bg-[#333] shadow-[0px_20px_35px_0px_#00000026] mt-6 text-white py-3 rounded-lg cursor-pointer"
+              >
+                Send Confirmation Code
+              </button>
+
               <div className="w-full flex justify-center gap-1 my-2">
                 <p>Already have an account?</p>
                 <Link

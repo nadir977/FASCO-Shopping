@@ -47,4 +47,4 @@ export const navigation = [
   },
 ];
 
-export  const navLinks =  ["/login","/registration","/ForgotPassword","/ConfirmationCode","/newpassword"]
+export  const navLinks =  ["/login","/registration","/ForgotPassword","/confirmationCode","/newpassword"]
