@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <div className="max-w-[1281px] mx-auto md:px-2 2xl:px-0 px-4 sm:px-6">
       <div className="flex flex-col md:flex-row mt-[6.5rem] gap-4 md:gap-0">
-        <div className="bg-[#E0E0E0] w-full md:w-[30%] md:pt-40 rounded flex justify-center">
+        <div className="bg-[#E0E0E0] w-full md:w-[30%] md:pt-40 rounded-lg flex justify-center">
           <img src={image1} alt="Left Hero" className="max-w-full h-auto" />
         </div>
 
@@ -42,7 +42,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="bg-[#E0E0E0] w-full md:w-[30%] pt-20 md:pt-40 rounded flex justify-center">
+        <div className="bg-[#E0E0E0] w-full md:w-[30%] pt-20 md:pt-40 rounded-lg flex justify-center">
           <img src={image2} alt="Right Hero" className="max-w-full h-auto" />
         </div>
       </div>

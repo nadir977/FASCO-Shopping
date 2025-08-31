@@ -55,6 +55,22 @@ const testimonials = [
 export default function Testimonials() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (
+      swiperRef.current &&
+      swiperRef.current.params &&
+      swiperRef.current.params.navigation
+    ) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+
+      swiperRef.current.navigation.destroy();
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <div className="bg-[#FAFAFA] pt-16 pb-8 md:mb-20 max-w-[1920px] mx-auto">
@@ -80,14 +96,7 @@ export default function Testimonials() {
           1280: { slidesPerView: 3, spaceBetween: -40 },
         }}
         onSwiper={(swiper) => {
-          setTimeout(() => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-
-            swiper.navigation.destroy();
-            swiper.navigation.init();
-            swiper.navigation.update();
-          });
+          swiperRef.current = swiper;
         }}
         pagination={{ el: ".custom-pagination", clickable: true }}
         className="relative custom-swiper"
