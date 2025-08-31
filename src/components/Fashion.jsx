@@ -55,7 +55,7 @@ const products = [
   {
     id: 6,
     name: "Oversized T-shirt",
-    price: "$17.00 ",
+    price: "$17.00",
     image: image31,
     colors: ["#F5F5F5", "#000000"],
   },
@@ -93,6 +93,37 @@ const Fashion = () => {
     "Price: High to Low",
   ];
   const [selected, setSelected] = useState(options[0]);
+  const [sortedProducts, setSortedProducts] = useState(products);
+
+  const [gridCols, setGridCols] = useState(
+    "sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  );
+
+  const handleSort = (option) => {
+    let sorted = [...products];
+
+    if (option === "Price: Low to High") {
+      sorted.sort(
+        (a, b) =>
+          parseFloat(a.price.replace("$", "")) -
+          parseFloat(b.price.replace("$", ""))
+      );
+    } else if (option === "Price: High to Low") {
+      sorted.sort(
+        (a, b) =>
+          parseFloat(b.price.replace("$", "")) -
+          parseFloat(a.price.replace("$", ""))
+      );
+    } else if (option === "Newest") {
+      sorted = [...products].reverse();
+    } else {
+      sorted = products;
+    }
+
+    setSelected(option);
+    setSortedProducts(sorted);
+    setOpen(false);
+  };
 
   return (
     <div className="px-2 md:px-4 py-10 max-w-[1281px] mx-auto">
@@ -139,10 +170,7 @@ const Fashion = () => {
                   <div
                     key={option}
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => {
-                      setSelected(option);
-                      setOpen(false);
-                    }}
+                    onClick={() => handleSort(option)}
                   >
                     {option}
                   </div>
@@ -151,16 +179,34 @@ const Fashion = () => {
             )}
 
             <div className="flex gap-2">
-              <div className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer">
+              <div
+                className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer"
+                onClick={() =>
+                  setGridCols("sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2")
+                }
+              >
                 <HiBars2 />
               </div>
-              <div className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer">
+              <div
+                className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer"
+                onClick={() => setGridCols("sm:grid-cols-2 md:grid-cols-3")}
+              >
                 <HiMiniBars3 />
               </div>
-              <div className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer">
+              <div
+                className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer"
+                onClick={() =>
+                  setGridCols("sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4")
+                }
+              >
                 <HiMiniBars4 />
               </div>
-              <div className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer">
+              <div
+                className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer"
+                onClick={() =>
+                  setGridCols("sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5")
+                }
+              >
                 <RxColumns />
               </div>
               <div className="p-2 bg-[#F2F2F2] rounded-md cursor-pointer">
@@ -169,28 +215,37 @@ const Fashion = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:mt-6 lg:grid-cols-4 gap-6 xl:gap-8 flex-1">
-            {products.map((product) => (
-              <div key={product.id} className="cursor-pointer px-13 md:px-0">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-[320px] sm:h-[360px]  md:h-[220px] lg:h-[320px] object-contain mb-4"
-                />
-                <h2 className="text-black Instagram_h1 mb-2 text-[16px] sm:text-[18px] md:text-[20px]">
-                  {product.name}
-                </h2>
-                <p className="leading-[26px] text-[14px] sm:text-[15px] md:text-[16px]">
-                  {product.price}
-                </p>
-                <div className="flex gap-2 my-4">
-                  {product.colors.map((color, index) => (
-                    <span
-                      key={index}
-                      className="w-5 h-5 rounded-full border-2 hover:border-[#8A8A8A] border-white"
-                      style={{ backgroundColor: color }}
-                    ></span>
-                  ))}
+          <div className={`grid grid-cols-1 ${gridCols} gap-6 xl:gap-8 flex-1`}>
+            {sortedProducts.map((product) => (
+              <div
+                key={product.id}
+                className="cursor-pointer bg-white   hover:shadow-md transition p-4 flex flex-col"
+              >
+                <div className="w-full">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-auto object-contain rounded-md"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <h2 className="text-black Instagram_h1 mb-1 text-[16px] sm:text-[18px] md:text-[20px]">
+                    {product.name}
+                  </h2>
+                  <p className="leading-[26px] text-[14px] sm:text-[15px] md:text-[16px]">
+                    {product.price}
+                  </p>
+
+                  <div className="flex gap-2 mt-3">
+                    {product.colors.map((color, index) => (
+                      <span
+                        key={index}
+                        className="w-5 h-5 rounded-full border-2 hover:border-[#8A8A8A] border-white"
+                        style={{ backgroundColor: color }}
+                      ></span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

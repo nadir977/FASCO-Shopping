@@ -6,15 +6,21 @@ import feature2 from "../assets/feature2.png";
 import feature3 from "../assets/feature3.png";
 import feature4 from "../assets/feature4.png";
 const Collection = () => {
-
   return (
     <div className="max-w-[1400px] mx-auto">
       <div
         className="bg-cover bg-center  mt-[40px] w-full"
-        style={{ backgroundImage: `url(${Group})` }}>
-        <div className="max-w-[1280px] mx-auto h-full flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2"><img src={Group1} alt="collaction" className="w-full h-full object-cover"/></div>
-          <div className="w-full md:w-1/2 px-6 md:px-12 py-8 md:py-12 flex flex-col justify-center gap-4">
+        style={{ backgroundImage: `url(${Group})` }}
+      >
+        <div className="max-w-[1280px] mx-auto h-full flex flex-col lg:flex-row">
+          <div className="w-full lg:w-1/2">
+            <img
+              src={Group1}
+              alt="collaction"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full lg:w-1/2 px-2  lg:px-12 py-8 md:py-12 flex flex-col justify-center gap-4">
             <p className="text-[#767676] text-[16px] m-0">Women Collection</p>
             <p className="text-[#484848] text-[46px] font-[400] Instagram_h1 m-0">
               Peaky Blinders
@@ -49,27 +55,29 @@ const Collection = () => {
         </div>
       </div>
 
-      <div className="max-w-[1281px] mx-auto md:px-2 2xl:px-0 flex flex-wrap justify-center md:justify-between py-16 gap-8">
-        <img
-          src={feature1}
-          alt="Image"
-          className="w-[48%] sm:w-[23%] md:w-auto"
-        />
-        <img
-          src={feature2}
-          alt="Image"
-          className="w-[48%] sm:w-[23%] md:w-auto"
-        />
-        <img
-          src={feature3}
-          alt="Image"
-          className="w-[48%] sm:w-[23%] md:w-auto"
-        />
-        <img
-          src={feature4}
-          alt="Image"
-          className="w-[48%] sm:w-[23%] md:w-auto"
-        />
+      <div className="max-w-[1281px] mx-auto md:px-2 px-2 2xl:px-0 py-16">
+        <div className="grid sm:grid-cols-4 lg:gap-6 gap-8 sm:gap-4 place-items-center">
+          <img
+            src={feature1}
+            alt="Image"
+            className="w-full max-w-[277px] h-auto"
+          />
+          <img
+            src={feature2}
+            alt="Image"
+            className="w-full max-w-[246px] h-auto"
+          />
+          <img
+            src={feature3}
+            alt="Image"
+            className="w-full max-w-[200px] h-auto"
+          />
+          <img
+            src={feature4}
+            alt="Image"
+            className="w-full max-w-[213px] h-auto"
+          />
+        </div>
       </div>
     </div>
   );

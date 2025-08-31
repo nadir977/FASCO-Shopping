@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -53,6 +53,9 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
     <div className="bg-[#FAFAFA] pt-16 pb-8 md:mb-20 max-w-[1920px] mx-auto">
       <div className="text-center mb-12">
@@ -64,39 +67,34 @@ export default function Testimonials() {
           duis.
         </p>
       </div>
+
       <Swiper
         modules={[Navigation, Pagination]}
-        navigation={{
-          prevEl: ".prev-btn",
-          nextEl: ".next-btn",
-        }}
-        pagination={{
-          el: ".custom-pagination",
-          clickable: true,
-        }}
         loop={true}
         centeredSlides={true}
         slidesPerView={3}
         spaceBetween={-40}
         breakpoints={{
-          0: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: -40,
-          },
+          0: { slidesPerView: 1, spaceBetween: 20 },
+          768: { slidesPerView: 2, spaceBetween: 10 },
+          1280: { slidesPerView: 3, spaceBetween: -40 },
         }}
+        onSwiper={(swiper) => {
+          setTimeout(() => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+
+            swiper.navigation.destroy();
+            swiper.navigation.init();
+            swiper.navigation.update();
+          });
+        }}
+        pagination={{ el: ".custom-pagination", clickable: true }}
         className="relative custom-swiper"
       >
         {testimonials.map((t, index) => (
           <SwiperSlide key={index}>
-            <div className="testimonial-card bg-white flex flex-col md:mt-10 md:flex-row  rounded-xl gap-6 shadow-lg py-8 px-6 mx-auto transition-all duration-300 max-w-[500px]">
+            <div className="testimonial-card bg-white flex flex-col md:mt-10 md:flex-row rounded-xl gap-6 shadow-lg py-8 px-6 mx-auto transition-all duration-300 max-w-[500px]">
               <div className="w-full md:w-[40%]">
                 <img
                   src={t.image}
@@ -130,21 +128,23 @@ export default function Testimonials() {
           </SwiperSlide>
         ))}
 
-        {/* Pagination + Buttons */}
-        <div className="flex flex-col items-center mt-8 gap-4">
-          <div className="custom-pagination flex justify-center gap-2"></div>
-
-          {/* Buttons sirf md ke baad visible */}
-          <div className="hidden md:flex gap-4 py-6">
-            <button className="prev-btn bg-white shadow-lg w-10 h-10 cursor-pointer flex items-center text-[#B6B6B6] hover:text-black justify-center rounded-full hover:bg-gray-100">
-              <FaAngleLeft />
-            </button>
-            <button className="next-btn bg-white shadow-lg w-10 h-10 cursor-pointer flex items-center text-[#B6B6B6] hover:text-black justify-center rounded-full hover:bg-gray-100">
-              <FaAngleRight />
-            </button>
-          </div>
-        </div>
+        <div className="custom-pagination flex justify-center gap-2 mt-8"></div>
       </Swiper>
+
+      <div className="hidden md:flex gap-4 py-6 justify-center">
+        <button
+          ref={prevRef}
+          className="prev-btn bg-white shadow-lg w-10 h-10 cursor-pointer flex items-center text-[#B6B6B6] hover:text-black justify-center rounded-full hover:bg-gray-100"
+        >
+          <FaAngleLeft />
+        </button>
+        <button
+          ref={nextRef}
+          className="next-btn bg-white shadow-lg w-10 h-10 cursor-pointer flex items-center text-[#B6B6B6] hover:text-black justify-center rounded-full hover:bg-gray-100"
+        >
+          <FaAngleRight />
+        </button>
+      </div>
     </div>
   );
 }

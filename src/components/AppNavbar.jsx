@@ -7,7 +7,7 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
-import { navLinks } from "../assets/data.jsX";
+import { navLinks } from "../assets/data.jsx";
 
 const navigation = [
   { name: "Home", href: "#home", current: true },
@@ -17,13 +17,11 @@ const navigation = [
 ];
 
 const AppNavbar = () => {
+  const pathname = useLocation().pathname;
 
-
-  const pathname = useLocation().pathname; 
- 
- if(navLinks.includes(pathname)){
-   return null;
- }
+  if (navLinks.includes(pathname)) {
+    return null;
+  }
 
   return (
     <Disclosure
@@ -31,7 +29,7 @@ const AppNavbar = () => {
       className="relative after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px text-black"
     >
       <div className="mx-auto max-w-[1281px]">
-        <div className="relative flex h-[104px] items-center justify-between md:px-2 2xl:px-0">
+        <div className="relative flex h-[104px] items-center justify-between px-2 2xl:px-0">
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden pr-4">
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-white/5 hover:text-[#333] focus:outline-2 focus:-outline-offset-1 focus:outline-[#484848]">
               <span className="sr-only">Open main menu</span>
@@ -39,25 +37,26 @@ const AppNavbar = () => {
               <XMarkIcon className="hidden h-6 w-6 group-data-[open]:block" />
             </DisclosureButton>
           </div>
-          <div className="flex w-full md:p-0 pl-6 items-center justify-between">
+          <div className="flex w-full  items-center justify-between">
             <div className="flex shrink-0 items-center">
               <img alt="Your Company" src={FASCO} className="h-8 w-auto" />
             </div>
 
-            <div className="hidden sm:flex sm:ml-6 space-x-4 items-center">
+            <div className="hidden sm:flex  items-center gap-2 md:gap-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
                   aria-current={item.current ? "page" : undefined}
                   className={`
-                    relative mx-6 px-2 py-1 text-[#484848] font-medium after:content-[''] after:absolute after:bottom-0 after:h-[2px] after:bg-[#484848] after:transition-all
-                    ${
-                      item.current  
-                        ? "after:left-0 after:w-full text-[#484848] font-semibold"
-                        : "after:left-1/2 after:w-0 hover:after:w-full hover:after:left-0"
-                    }
-                  `}
+        relative px-2 md:px-3 py-1 text-[#484848] font-medium whitespace-nowrap
+        after:content-[''] after:absolute after:bottom-0 after:h-[2px] after:bg-[#484848] after:transition-all
+        ${
+          item.current
+            ? "after:left-0 after:w-full text-[#484848] font-semibold"
+            : "after:left-1/2 after:w-0 hover:after:w-full hover:after:left-0"
+        }
+      `}
                 >
                   {item.name}
                 </Link>
@@ -65,16 +64,16 @@ const AppNavbar = () => {
 
               <Link to="/login">
                 <button
-                  className="relative mx-6 px-2 py-1 text-[#484848] font-medium 
-                    after:content-[''] after:absolute after:bottom-0 after:h-[2px] after:bg-[#484848] after:transition-all
-                    after:left-1/2 after:w-0 hover:after:w-full hover:after:left-0"
+                  className="relative px-2 md:px-3 py-1 text-[#484848] font-medium whitespace-nowrap
+        after:content-[''] after:absolute after:bottom-0 after:h-[2px] after:bg-[#484848] after:transition-all
+        after:left-1/2 after:w-0 hover:after:w-full hover:after:left-0"
                 >
                   Sign in
                 </button>
               </Link>
 
               <Link to="/registration">
-                <button className="py-3 px-8 cursor-pointer rounded-lg bg-black hover:bg-[#333] text-white">
+                <button className="py-2 px-3 md:py-3 md:px-6 cursor-pointer rounded-lg bg-black hover:bg-[#333] text-white text-sm md:text-base whitespace-nowrap">
                   Sign Up
                 </button>
               </Link>

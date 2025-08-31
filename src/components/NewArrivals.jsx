@@ -33,7 +33,7 @@ const products = [
     reviews: "(41k) Customer Reviews",
     status: "Almost Sold Out",
     rating: 5,
-    image: image17 ,
+    image: image17,
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const products = [
     reviews: "(41k) Customer Reviews",
     status: "Almost Sold Out",
     rating: 5,
-    image: image18 ,
+    image: image18,
   },
   {
     id: 4,
@@ -72,7 +72,7 @@ const products = [
     reviews: "(41k) Customer Reviews",
     status: "Almost Sold Out",
     rating: 5,
-    image: image21 ,
+    image: image21,
   },
 ];
 
@@ -82,7 +82,9 @@ export default function NewArrivals() {
   return (
     <section className="max-w-[1281px] mx-auto md:pt-30 py-10 px-4">
       <div className="text-center mb-10">
-        <h2 className="text-[46px] Instagram_h1 text-[#484848]">New Arrivals</h2>
+        <h2 className="text-[46px] Instagram_h1 text-[#484848]">
+          New Arrivals
+        </h2>
         <p className="text-[#8A8A8A] mt-2 max-w-xl mx-auto">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque
           duis ultrices sollicitudin aliquam sem, scelerisque ultrices
@@ -112,28 +114,37 @@ export default function NewArrivals() {
             key={p.id}
             className="bg-white rounded-xl px-6 py-2 shadow-md overflow-hidden hover:shadow-xl transition"
           >
-            <img src={p.image} alt={p.name} className="w-full rounded-xl object-cover" />
+            <img
+              src={p.image}
+              alt={p.name}
+              className="w-full rounded-xl object-cover"
+            />
 
             <div className=" flex flex-col gap-5 py-2">
-             <div className="flex justify-between  ">
+              <div className="flex justify-between  ">
                 <div>
-                <h3 className="text-[20px] text-[#484848]">{p.name}</h3>
-              <p className="text-[12px] font-[500] text-[#8A8A8A]">{p.brand}</p>
+                  <h3 className="text-[20px] text-[#484848]">{p.name}</h3>
+                  <p className="text-[12px] font-[500] text-[#8A8A8A]">
+                    {p.brand}
+                  </p>
+                </div>
+                <div className="flex text-2xl text-[#FCA120] ">
+                  {"★".repeat(p.rating)}
+                </div>
               </div>
-              <div className="flex text-2xl text-[#FCA120] ">
-                {"★".repeat(p.rating)}
-              </div>
-             </div>
 
-              <p className="text-[12px] font-[500] text-[#484848]">{p.reviews}</p>
-              
+              <p className="text-[12px] font-[500] text-[#484848]">
+                {p.reviews}
+              </p>
+
               <div className="flex justify-between items-center">
-                 <p className="text-[24px] font-[500] text-[#484848]">{p.price}</p>
+                <p className="text-[24px] font-[500] text-[#484848]">
+                  {p.price}
+                </p>
                 {p.status && (
-                <p className="text-[12px] text-[#FF4646]">{p.status}</p>
-              )}
+                  <p className="text-[12px] text-[#FF4646]">{p.status}</p>
+                )}
               </div>
-             
             </div>
           </div>
         ))}

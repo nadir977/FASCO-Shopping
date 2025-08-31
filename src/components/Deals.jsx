@@ -5,23 +5,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
-import { dealSlides } from "../assets/data.jsX";
+import { dealSlides } from "../assets/data.jsx";
 
 const Deals = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const paginationRef = useRef(null);
 
-  const [navReady, setNavReady] = useState(false); 
+  const [navReady, setNavReady] = useState(false);
   const [timeLeft, setTimeLeft] = useState(6 * 60 * 60);
- 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
     return () => clearInterval(interval);
   }, []);
- 
+
   useEffect(() => {
     if (prevRef.current && nextRef.current) {
       setNavReady(true);
@@ -37,32 +37,32 @@ const Deals = () => {
   };
 
   const { d, h, m, s } = formatTime(timeLeft);
- 
-  const slides = dealSlides.length < 4 ? [...dealSlides, ...dealSlides] : dealSlides;
+
+  const slides =
+    dealSlides.length < 4 ? [...dealSlides, ...dealSlides] : dealSlides;
 
   return (
     <div className="md:py-30 py-10 max-w-[1280px] mx-auto px-4 sm:px-6">
-      <div className="flex flex-col md:flex-row">
-        
-        <div className="flex flex-col w-full md:w-1/3">
-          <h1 className="md:text-[46px] text-[38px] text-[#484848] Instagram_h1">
+      <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col justify-center items-center lg:items-stretch  w-full lg:w-1/3">
+          <h1 className="xl:text-[46px] text-[38px] text-[#484848] Instagram_h1">
             Deals Of The Month
           </h1>
-          <p className="text-[#8A8A8A] mt-3 mb-6 leading-relaxed">
+          <p className="text-[#8A8A8A] sm:max-w-[360px] lg:w-full mt-3 mb-6 leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque
             duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices
             sollicitudin
           </p>
 
-          <button className="bg-black text-[16px] md:max-w-[210px] font-[400] text-white shadow-[0px_20px_35px_0px_#00000026] py-[14px] px-[60px] my-4 rounded-lg cursor-pointer">
+          <button className="bg-black text-[16px] max-w-[360px] lg:max-w-[210px] w-full font-[400] text-white shadow-[0px_20px_35px_0px_#00000026] py-[14px] px-[60px] my-4 rounded-lg cursor-pointer">
             Buy Now
           </button>
 
           <h3 className="mt-8 mb-4 font-[500] text-[#484848] text-[24px] md:text-[28px]">
             Hurry, Before It’s Too Late!
           </h3>
- 
-          <div className="flex gap-4 flex-wrap mb-2">
+
+          <div className="flex gap-4 lg:gap-3 xl:gap-4 flex-wrap mb-6 lg:mb-2 ">
             {[
               { value: d, label: "Days" },
               { value: h, label: "Hr" },
@@ -71,19 +71,24 @@ const Deals = () => {
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center">
                 <div
-                  className="digital-font px-4 py-2 rounded-lg bg-white text-[#484848] font-bold min-w-[70px] text-center"
-                  style={{ fontSize: "32px", boxShadow: "0px 4px 14px 1px #00000029" }}
+                  className="digital-font px-3 sm:px-4 py-2 rounded-lg bg-white text-[#484848] font-bold min-w-[50px] sm:min-w-[70px] text-center shadow-md"
+                  style={{
+                    boxShadow: "0px 4px 14px 1px #00000029",
+                  }}
                 >
-                  {String(item.value).padStart(2, "0")}
+                  <span className="text-[20px] sm:text-[28px] md:text-[32px]">
+                    {String(item.value).padStart(2, "0")}
+                  </span>
                 </div>
-                <p className="text-[24px] text-[#484848] mt-2 leading-[120%]">{item.label}</p>
+                <p className="text-[14px] sm:text-[18px] md:text-[24px] text-[#484848] mt-2 leading-[120%]">
+                  {item.label}
+                </p>
               </div>
             ))}
           </div>
         </div>
- 
-        <div className="relative w-full md:w-2/3 flex">
-      
+
+        <div className="relative w-full lg:w-2/3 flex">
           <div className="hidden md:flex items-end gap-4 mr-4 z-20">
             <button
               ref={prevRef}
@@ -98,7 +103,7 @@ const Deals = () => {
               <FaAngleRight />
             </button>
           </div>
- 
+
           {navReady && (
             <Swiper
               modules={[Navigation, Pagination]}
@@ -133,7 +138,9 @@ const Deals = () => {
                       <p className="text-[16px] text-[#484848]">
                         {slide.id} — {slide.title}
                       </p>
-                      <h4 className="text-[28px] text-[#484848]">{slide.discount}</h4>
+                      <h4 className="text-[28px] text-[#484848]">
+                        {slide.discount}
+                      </h4>
                     </div>
                   </div>
                 </SwiperSlide>

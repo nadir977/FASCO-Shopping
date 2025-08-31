@@ -6,13 +6,13 @@ import image37 from "../assets/image37.png";
 import image38 from "../assets/image38.png";
 import image39 from "../assets/image39.png";
 import image40 from "../assets/image40.png";
-import { FaRegStar, FaStar, FaEye } from "react-icons/fa6";
+import { FaRegStar, FaStar } from "react-icons/fa6";
 import { RiArrowUpDownFill } from "react-icons/ri";
 import { GoQuestion } from "react-icons/go";
 import { GrShareOption } from "react-icons/gr";
 import { BsTruck, BsBox2 } from "react-icons/bs";
 import trustbag from "../assets/trustbag.png";
-import { Link } from "react-router-dom";
+
 import ModalCard from "./ModalCard";
 
 const products = [
@@ -34,6 +34,7 @@ const Products = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [quantity, setQuantity] = useState(1);
   const [active, setActive] = useState(false);
+
   const [openCart, setOpenCart] = useState(false);
 
   const [timeLeft, setTimeLeft] = useState(6 * 60 * 60);
@@ -53,28 +54,10 @@ const Products = () => {
     return { d, h, m, s };
   };
 
-  const cartItems = [
-    {
-      name: "Denim Jacket",
-      color: "Red",
-      size: selectedSize,
-      quantity: quantity,
-      price: 39.0,
-      image: selectedImage,
-    },
-  ];
-
   return (
-    <div className="max-w-[1281px] mx-auto my-10 md:my-16 flex flex-col md:flex-row md:justify-between px-4 md:px-0">
-     
-      <ModalCard
-        open={openCart}
-        onClose={() => setOpenCart(false)}
-        cartItems={cartItems}
-      />
-
-      <div className="flex flex-col md:flex-row max-w-[615px] ">
-        <div className="flex md:flex-col gap-4 p-1 px-6 w-fit h-fit md:order-1 order-2 justify-center md:justify-start">
+    <div className="max-w-[1281px] mx-auto my-10 md:my-16 flex flex-col md:flex-row gap-6 lg:gap-16 px-4 md:px-0">
+      <div className="flex flex-col md:flex-row max-w-[615px] w-full items-center md:items-start gap-4">
+        <div className="flex md:flex-col gap-3 p-1 md:pr-4 order-2 md:order-1">
           {products.map((product) => (
             <div
               key={product.id}
@@ -87,34 +70,32 @@ const Products = () => {
             >
               <img
                 src={product.image}
-                alt="Image"
-                className="h-auto w-[58px]"
+                alt="Thumbnail"
+                className="w-12 sm:w-14 h-auto object-contain"
               />
             </div>
           ))}
         </div>
 
-        <div className="p-1 md:order-2 order-1 w-full">
+        <div className="order-1 md:order-2 w-full">
           <img
             src={selectedImage}
-            alt="Image"
-            className="w-full md:w-[491px] h-auto"
+            alt="Main"
+            className="w-full max-w-[491px] h-auto object-contain mx-auto"
           />
         </div>
       </div>
 
-      <div className="flex flex-col max-w-[585px] w-full gap-6 md:pr-2 2xl:pr-0 ">
+      <div className="flex flex-col max-w-[585px] w-full gap-6 md:pr-2 2xl:pr-0">
         <div className="flex flex-col">
-          <p className="text-[12px] sm:text-[14px] leading-[20px] py-1 text-[#666666] Instagram_h1">
-            Fasco
-          </p>
-          <div className="flex justify-between items-center">
-            <h1 className="text-[22px] sm:text-[30px] leading-[32px] sm:leading-[42px] Instagram_h1">
+          <p className="text-xs sm:text-sm text-[#666]">Fasco</p>
+          <div className="flex justify-between items-center gap-4">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold">
               Denim Jacket
             </h1>
             <div
               onClick={() => setActive(!active)}
-              className="p-2 cursor-pointer bg-[#FFFFFF] border rounded-full border-[#EEEEEE]"
+              className="p-2 cursor-pointer bg-white border rounded-full border-[#EEE]"
             >
               {active ? (
                 <FaStar className="text-yellow-500" />
@@ -131,26 +112,23 @@ const Products = () => {
               <FaStar />
               <FaRegStar />
             </div>
-            <p>(3)</p>
+            <p className="text-sm">(3)</p>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <h1 className="text-[20px] sm:text-[24px] leading-[28px] sm:leading-[32px] Instagram_h1">
-            $39.00
-          </h1>
+          <h1 className="text-lg sm:text-2xl font-semibold">$39.00</h1>
           <p className="line-through text-gray-500">$59.00</p>
-          <div className="px-2 py-[2.5px] bg-[#DA3F3F] flex text-white gap-1 text-[11px] font-[500] rounded-3xl">
-            <p>Save</p>
-            <p>33%</p>
+          <div className="px-2 py-[2px] bg-[#DA3F3F] text-white text-xs rounded-2xl flex items-center gap-1">
+            <span>Save</span> <span>33%</span>
           </div>
         </div>
 
-        <div className="flex justify-between items-center py-2 px-4 border-[#F8CCCC] border bg-[#FDEFEE] rounded transition hover:bg-[#ffeaea]">
-          <p className="text-[14px] sm:text-[18px] text-[#FF706B]">
+        <div className="flex justify-between items-center py-2 px-4 border border-[#F8CCCC] bg-[#FDEFEE] rounded hover:bg-[#ffeaea]">
+          <p className="text-sm sm:text-base text-[#FF706B] font-medium">
             Hurry up! Sale ends in:
           </p>
-          <div className="flex gap-2 sm:gap-4 text-[#FF706B] text-[14px] sm:text-[20px] font-[600] whitespace-nowrap">
+          <div className="flex gap-2 sm:gap-3 text-[#FF706B] text-sm sm:text-lg font-semibold">
             <span>{String(formatTime(timeLeft).d).padStart(2, "0")}</span>:
             <span>{String(formatTime(timeLeft).h).padStart(2, "0")}</span>:
             <span>{String(formatTime(timeLeft).m).padStart(2, "0")}</span>:
@@ -158,29 +136,17 @@ const Products = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <p className="leading-[20px] sm:leading-[24px] text-[#666666] text-sm sm:text-base">
-            Only <span className="font-[700]">9</span> item(s) left in stock!
-          </p>
-          <div className="flex items-center">
-            <div className="h-[5px] w-[30px] bg-[#EF2D2D] rounded"></div>
-            <div className="h-[5px] w-full bg-[#DEDEDE] rounded-lg"></div>
-          </div>
-        </div>
-
         <div>
-          <p className="font-[700] leading-[24px] Instagram_h1 pb-2 text-sm sm:text-base">
-            Size: {selectedSize}
-          </p>
-          <div className="flex flex-wrap gap-4">
+          <p className="font-semibold mb-2">Size: {selectedSize}</p>
+          <div className="flex flex-wrap gap-3">
             {sizes.map((size) => (
               <div
                 key={size}
                 onClick={() => setSelectedSize(size)}
-                className={`py-2 px-4 h-fit border rounded-md cursor-pointer text-center ${
+                className={`py-2 px-4 border rounded-md cursor-pointer ${
                   selectedSize === size
                     ? "bg-black text-white border-black"
-                    : "border-[#EEEEEE] hover:bg-gray-100"
+                    : "border-[#EEE] hover:bg-gray-100"
                 }`}
               >
                 {size}
@@ -190,18 +156,16 @@ const Products = () => {
         </div>
 
         <div>
-          <p className="font-[700] leading-[24px] Instagram_h1 pb-2 text-sm sm:text-base">
-            Color
-          </p>
-          <div className="flex flex-wrap gap-2">
+          <p className="font-semibold mb-2">Color</p>
+          <div className="flex gap-3">
             {colors.map((color, i) => (
               <span
                 key={i}
                 onClick={() => setSelectedColor(color)}
-                className={`w-6 h-6 rounded-full cursor-pointer shadow-[0px_4px_6px_#0000001A] ${
+                className={`w-7 h-7 rounded-full cursor-pointer shadow ${
                   selectedColor === color
-                    ? "ring-1 ring-offset-3 ring-black"
-                    : "hover:border border-[#8A8A8A]"
+                    ? "ring-2 ring-black"
+                    : "hover:ring hover:ring-gray-300"
                 } ${color}`}
               ></span>
             ))}
@@ -209,36 +173,33 @@ const Products = () => {
         </div>
 
         <div>
-          <p className="font-[700] leading-[24px] Instagram_h1 pb-2 text-sm sm:text-base">
-            Quantity
-          </p>
+          <p className="font-semibold mb-2">Quantity</p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex border border-[#EEEEEE] p-2 px-4 gap-6 rounded w-fit">
+            <div className="flex border border-[#EEE] rounded">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="px-2 cursor-pointer hover:bg-gray-100 border border-white hover:border-gray-400"
+                className="px-3 py-2 hover:bg-gray-100"
               >
                 -
               </button>
-              <p>{quantity}</p>
+              <p className="px-4 py-2">{quantity}</p>
               <button
                 onClick={() => setQuantity((q) => q + 1)}
-                className="px-2 cursor-pointer hover:bg-gray-100 border border-white hover:border-gray-400"
+                className="px-3 py-2 hover:bg-gray-100"
               >
                 +
               </button>
             </div>
-
             <button
               onClick={() => setOpenCart(true)}
-              className="font-[700] leading-[24px] Instagram_h1 border py-2 px-6 rounded flex justify-center items-center w-full cursor-pointer hover:bg-gray-300"
+              className="flex-1 border py-2 px-6 rounded font-semibold hover:bg-gray-100 cursor-pointer"
             >
               Add to cart
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 py-4 border-b border-[#EEEEEE] pt-12">
+        <div className="flex flex-col sm:flex-row gap-4 border-b border-[#EEE] pb-4 pt-8">
           <div className="flex items-center gap-2">
             <RiArrowUpDownFill /> Compare
           </div>
@@ -250,34 +211,30 @@ const Products = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <div className="flex gap-1 items-center">
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-2">
             <BsTruck />
-            <span className="font-[700] leading-[24px] Instagram_h1">
-              Estimated Delivery:
-            </span>
-            Jul 30 - Aug 03
+            <span className="font-semibold">Estimated Delivery:</span>
+            <span>Jul 30 - Aug 03</span>
           </div>
-          <div className="flex gap-2 items-start">
+          <div className="flex items-start gap-2">
             <BsBox2 className="mt-1" />
             <div>
-              <p className="font-[700] leading-[24px] Instagram_h1 block sm:inline pr-1">
-                Free Shipping & Returns:
-              </p>
-              <p className="text-sm block sm:inline">On all orders over $75</p>
+              <span className="font-semibold">Free Shipping & Returns: </span>
+              <span className="text-sm">On all orders over $75</span>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center items-center flex-col gap-4 py-6 rounded bg-[#F8F8F8]">
-          <div>
-            <img src={trustbag} alt="Image" className="max-w-[180px] w-full" />
-          </div>
-          <div className="font-[700] leading-[100%] Instagram_h1 text-center">
+        <div className="flex flex-col items-center gap-3 py-6 rounded bg-[#F8F8F8]">
+          <img src={trustbag} alt="Trust" className="max-w-[180px] w-full" />
+          <p className="font-semibold text-center">
             Guarantee safe & secure checkout
-          </div>
+          </p>
         </div>
       </div>
+
+      <ModalCard open={openCart} onClose={() => setOpenCart(false)} />
     </div>
   );
 };
